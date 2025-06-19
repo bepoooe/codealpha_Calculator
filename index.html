@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProCalc - Advanced Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Advanced scientific calculator with modern UI">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>      <div class="calculator-container">
+        <div class="calculator">
+            <div class="header">
+                <div class="logo">
+                    <i class="fas fa-calculator"></i>
+                    <span>ProCalc</span>
+                </div>
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </div>
+            </div>
+            
+            <div class="display-section">
+                <div class="display-header">
+                    <div class="status-indicators">
+                        <div class="memory-status" id="memoryStatus">
+                            <i class="fas fa-memory"></i>
+                            <span>M</span>
+                        </div>
+                        <div class="angle-mode" id="angleMode">DEG</div>
+                    </div>
+                    <div class="settings-btn" id="settingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+                <div class="expression" id="expression"></div>
+                <div class="result" id="result">0</div>
+                <div class="display-footer">
+                    <div class="ans-btn" id="ansBtn">ANS</div>
+                </div>
+            </div>
+              <div class="mode-toggle">
+                <button class="mode-btn active" id="basicMode">
+                    <i class="fas fa-calculator-alt"></i>
+                    <span>Basic</span>
+                </button>
+                <button class="mode-btn" id="scientificMode">
+                    <i class="fas fa-flask"></i>
+                    <span>Scientific</span>
+                </button>
+            </div>            <div class="buttons-container">
+                <!-- Scientific functions (hidden by default) -->
+                <div class="scientific-functions" id="scientificFunctions">
+                    <div class="function-row">
+                        <button class="btn function" data-value="sin">
+                            <i class="fas fa-wave-square"></i>
+                            <span>sin</span>
+                        </button>
+                        <button class="btn function" data-value="cos">
+                            <i class="fas fa-wave-square"></i>
+                            <span>cos</span>
+                        </button>
+                        <button class="btn function" data-value="tan">
+                            <i class="fas fa-wave-square"></i>
+                            <span>tan</span>
+                        </button>
+                        <button class="btn function" data-value="ln">
+                            <span>ln</span>
+                        </button>
+                        <button class="btn function" data-value="log">
+                            <span>log</span>
+                        </button>
+                    </div>
+                    <div class="function-row">
+                        <button class="btn function" data-value="sqrt">
+                            <i class="fas fa-square-root-alt"></i>
+                        </button>
+                        <button class="btn function" data-value="pow">
+                            <span>x<sup>y</sup></span>
+                        </button>
+                        <button class="btn function" data-value="exp">
+                            <span>e<sup>x</sup></span>
+                        </button>
+                        <button class="btn function" data-value="factorial">
+                            <span>x!</span>
+                        </button>
+                        <button class="btn function" data-value="pi">
+                            <span>π</span>
+                        </button>
+                    </div>
+                    <div class="function-row">
+                        <button class="btn function" data-value="e">
+                            <span>e</span>
+                        </button>
+                        <button class="btn function" data-value="abs">
+                            <span>|x|</span>
+                        </button>
+                        <button class="btn function" data-value="percent">
+                            <span>%</span>
+                        </button>
+                        <button class="btn function" data-value="inverse">
+                            <span>1/x</span>
+                        </button>
+                        <button class="btn function" data-value="square">
+                            <span>x²</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Main calculator buttons -->
+                <div class="main-buttons">
+                    <div class="row">
+                        <button class="btn clear" id="clearAll">
+                            <i class="fas fa-trash"></i>
+                            <span>C</span>
+                        </button>
+                        <button class="btn clear" id="clearEntry">
+                            <span>CE</span>
+                        </button>
+                        <button class="btn operator" data-value="backspace">
+                            <i class="fas fa-backspace"></i>
+                        </button>
+                        <button class="btn operator primary" data-value="/">
+                            <i class="fas fa-divide"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="row">
+                        <button class="btn number" data-value="7">7</button>
+                        <button class="btn number" data-value="8">8</button>
+                        <button class="btn number" data-value="9">9</button>
+                        <button class="btn operator primary" data-value="*">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="row">
+                        <button class="btn number" data-value="4">4</button>
+                        <button class="btn number" data-value="5">5</button>
+                        <button class="btn number" data-value="6">6</button>
+                        <button class="btn operator primary" data-value="-">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="row">
+                        <button class="btn number" data-value="1">1</button>
+                        <button class="btn number" data-value="2">2</button>
+                        <button class="btn number" data-value="3">3</button>
+                        <button class="btn operator primary" data-value="+">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="row">
+                        <button class="btn number zero" data-value="0">0</button>
+                        <button class="btn operator" data-value=".">
+                            <i class="fas fa-circle" style="font-size: 8px;"></i>
+                        </button>
+                        <button class="btn operator" data-value="negate">
+                            <i class="fas fa-plus-minus"></i>
+                        </button>
+                        <button class="btn equals" id="equals">
+                            <i class="fas fa-equals"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Memory functions -->
+                    <div class="row memory-row">
+                        <button class="btn memory" id="memoryClear">
+                            <span>MC</span>
+                        </button>
+                        <button class="btn memory" id="memoryRecall">
+                            <span>MR</span>
+                        </button>
+                        <button class="btn memory" id="memoryAdd">
+                            <span>M+</span>
+                        </button>
+                        <button class="btn memory" id="memorySubtract">
+                            <span>M−</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+              <div class="history-section">
+                <div class="history-header">
+                    <div class="history-title">
+                        <i class="fas fa-history"></i>
+                        <h3>History</h3>
+                    </div>
+                    <div class="history-actions">
+                        <button class="btn-small" id="exportHistory">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn-small" id="clearHistory">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </div>
+        
+        <!-- Settings Modal -->
+        <div class="modal" id="settingsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Settings</h3>
+                    <button class="close-btn" id="closeSettings">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-item">
+                        <label>Angle Mode</label>
+                        <div class="toggle-group">
+                            <button class="toggle-btn active" data-angle="deg">Degrees</button>
+                            <button class="toggle-btn" data-angle="rad">Radians</button>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label>Decimal Places</label>
+                        <input type="range" id="decimalPlaces" min="0" max="10" value="6">
+                        <span id="decimalValue">6</span>
+                    </div>
+                    <div class="setting-item">
+                        <label>Sound Effects</label>
+                        <div class="switch">
+                            <input type="checkbox" id="soundToggle" checked>
+                            <label for="soundToggle"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script_new.js"></script>
+</body>
+</html>
