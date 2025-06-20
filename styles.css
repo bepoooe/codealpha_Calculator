@@ -515,6 +515,9 @@ body {
     justify-content: flex-end;
     text-align: right;
     word-break: break-all;
+    overflow: hidden;
+    line-height: 1.2;
+    padding: 0 4px;
 }
 
 .display-footer {
@@ -555,8 +558,16 @@ body {
 .function-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* Last row with 3 buttons - centered layout */
+.function-row.last-row {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    max-width: 75%;
+    margin: 0 auto 12px auto;
 }
 
 .number-system-toggle {
@@ -601,17 +612,17 @@ body {
 .main-buttons .row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 16px;
+    margin-bottom: 16px;
 }
 
 .memory-row {
-    margin-top: 15px;
-    gap: 8px;
+    margin-top: 20px;
+    gap: 12px;
 }
 
 .btn {
-    padding: 18px;
+    padding: 20px;
     border: none;
     border-radius: var(--border-radius-md);
     font-size: 18px;
@@ -629,6 +640,8 @@ body {
     justify-content: center;
     gap: 6px;
     flex-direction: column;
+    min-height: 60px;
+    user-select: none;
 }
 
 .btn::before {
@@ -649,11 +662,13 @@ body {
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
+    border-color: var(--text-accent);
 }
 
 .btn:active {
     transform: translateY(-1px);
     box-shadow: var(--shadow-sm);
+    transition: all 0.1s ease;
 }
 
 .btn span {
@@ -757,6 +772,12 @@ body {
 
 .btn.zero {
     grid-column: span 1;
+}
+
+/* Hide empty placeholder button */
+.btn.function[data-value="empty"] {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 /* History Section */
@@ -1044,14 +1065,20 @@ body {
     .result {
         font-size: 32px;
     }
-    
-    .btn {
+      .btn {
         padding: 15px;
         font-size: 16px;
+        min-height: 50px;
+    }
+    
+    .main-buttons .row {
+        gap: 12px;
+        margin-bottom: 12px;
     }
     
     .function-row {
         grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
     }
     
     .btn.function {
@@ -1180,4 +1207,32 @@ body {
         box-shadow: none;
         border: 1px solid #000;
     }
+}
+
+/* Button press animation */
+.btn.pressed {
+    transform: scale(0.95);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.1s ease;
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .btn:active {
+        transform: scale(0.95);
+        background: var(--glass-hover);
+    }
+}
+
+/* Improved visual feedback for different button types */
+.btn.number:active {
+    background: linear-gradient(135deg, #0e7490, #155e75);
+}
+
+.btn.operator:active {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.btn.function:active {
+    background: linear-gradient(135deg, #155e75, #164e63);
 }
