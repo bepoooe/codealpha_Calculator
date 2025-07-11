@@ -1,6 +1,6 @@
 # Calculator
 
-A modern, feature-rich scientific calculator built with HTML, CSS, and JavaScript for **Pinnacle Labs Internship**.
+A modern, feature-rich scientific calculator built with HTML, CSS, and JavaScript.
 
 ## 🚀 Features
 
@@ -75,7 +75,6 @@ cd Calculator
 
 ## 👨‍💻 Developer
 
-**Created for Pinnacle Labs Internship**
 - Demonstrates modern web development skills
 - Showcases mathematical programming abilities
 - Exhibits attention to user experience and design
@@ -86,5 +85,3 @@ cd Calculator
 This project is created for educational and internship purposes.
 
 ---
-
-*Built with ❤️ for Pinnacle Labs Internship Program*
